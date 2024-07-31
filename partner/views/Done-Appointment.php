@@ -19,6 +19,7 @@
     <table id="appointmentTable">
         <thead>
         <tr>
+            <th>Track Number</th>
             <th>Name</th>
             <th>Date</th>
             <th>Time</th>
@@ -35,14 +36,13 @@
             while ($row = $done->fetch_assoc()){
                 ?>
                 <tr>
+                    <td><?php echo $row['TRACK_NUMBER']?></td>
                     <td><?php echo $row['name']?></td>
                     <td><?php echo $row['DONATION_DATE']?></td>
                     <td><?php echo $row['DONATION_TIME']?></td>
                     <td><?php echo $row['D_NAME']?></td>
                     <td><?php echo $row['BLOOD_GROUP']?></td>
-                    <td class="action-btns">
-                        <button class="done-btn">Done</button>
-                    </td>
+                    <td>Done</td>
                 </tr>
                 <?php
             }
@@ -62,16 +62,15 @@
         tr = table.getElementsByTagName("tr");
 
         // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
+        for (i = 1; i < tr.length; i++) { // Start from 1 to skip the header row
+            tr[i].style.display = "none"; // Hide the row initially
             td = tr[i].getElementsByTagName("td");
             for (j = 0; j < td.length; j++) {
                 if (td[j]) {
                     txtValue = td[j].textContent || td[j].innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
+                        tr[i].style.display = ""; // Show the row if any column matches the filter
                         break;
-                    } else {
-                        tr[i].style.display = "none";
                     }
                 }
             }

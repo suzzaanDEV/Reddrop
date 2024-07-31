@@ -125,56 +125,7 @@ if($_SESSION['userid'] >= 0){
     </div>
     <hr>
     <hr>
-    <footer>
-        <div class="any-query">
-            <p class="query sec-title">Any Query?</p>
-            <form action="#">
-                <label for="Qname">Name:</label>
-                <input type="text" id="Qname" name="Qname">
-                <label for="Qemail">Email:</label>
-                <input type="text" id="Qname" name="Qname">
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject">
-                <label for="Query">Message:</label>
-                <textarea name="Query" id="Query" cols="60" rows="10" placeholder="Message here...."></textarea>
-                <button type="submit" class="button-main">Send <i class="fa-duotone fa-paper-plane-top"></i></button>
-            </form>
-        </div>
-        <div class="contact-us flex-item-center">
-            <div class="social-contact">
-                <p class="social-media sec-title">Social Media</p>
-            </div>
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-dribbble"></i>
-            <i class="fa-brands fa-linkedin-in"></i>
-            <i class="fa-brands fa-tiktok"></i>
-            <i class="fa-brands fa-twitter"></i>
-
-        </div>
-
-        <div class="navigating">
-            <p class="sec-title">Navigation</p>
-            <ul class="flex-item-center">
-                <a href="#">
-                    <li>Home</li>
-                </a>
-                <a href="#">
-                    <li>Why donate blood?</li>
-                </a>
-                <a href="#">
-                    <li>WHo we are?</li>
-                </a>
-                <a href="">
-                    <li>Events</li>
-                </a>
-            </ul>
-        </div>
-    </footer>
-    <div class="cp-section">
-        <img src="../assets/logo.webp" alt="">
-        <p>Copyright © 2024 Red Drop, Org.</p>
-    </div>
+   <?php require("./FooterQueryForm")?>
 
     <script>
         function showPopup(bannerUrl, name, date, time, location, details) {

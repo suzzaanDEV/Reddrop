@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../model/donation-fetch.php";
+require "../model/donation-center-fetch.php";
 
 // Redirect to Home page if user is not logged in
 if (!isset($_SESSION['userid'])) {
@@ -14,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "HELLO";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ?>
                 <div class="not-eligible">
                     <h1>Not eligible for donation</h1>
-                    <p>Your health status does not allow you to donate blood. Fill the survey form or Please contact your administrator for more
-                        information.</p>
+                    <p>Your health status does not allow you to donate blood. Fill the survey form or please contact your administrator for more information.</p>
                     <input type="button" value="Back" onclick="history.back()" style="width: 100px; margin-top: 20px;">
                 </div>
                 <?php } else if ($donationData['healthStatus'] === null) { ?>
@@ -59,61 +58,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="../controller/process_donation.php" method="post">
 
                     <div id="donate-first">
-                        <!--                    <label for="blood_group">Blood Group:</label>-->
-                        <!--                    <div class="box">-->
-                        <!--                        <select id="blood_group" name="blood_group" required>-->
-                        <!--                            <option value="A+">A+</option>-->
-                        <!--                            <option value="A-">A-</option>-->
-                        <!--                            <option value="B+">B+</option>-->
-                        <!--                            <option value="B-">B-</option>-->
-                        <!--                            <option value="O+">O+</option>-->
-                        <!--                            <option value="O-">O-</option>-->
-                        <!--                            <option value="AB+">AB+</option>-->
-                        <!--                            <option value="AB-">AB-</option>-->
-                        <!--                        </select>-->
-                        <!--                    </div>-->
-
-
                         <p>Health Conditions (check all that apply):</p>
 
                         <div class="checkbox-group checkbox-wrapper-1">
                             <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition1" name="health_conditions[]"
-                                    value="nausea">
+                                <input type="checkbox" class="substituted" id="health_condition1" name="health_conditions[]" value="nausea">
                                 <label for="health_condition1">Nausea</label>
                             </div>
                             <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition2" name="health_conditions[]"
-                                    value="headache">
+                                <input type="checkbox" class="substituted" id="health_condition2" name="health_conditions[]" value="headache">
                                 <label for="health_condition2">Headache</label>
                             </div>
                             <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition3" name="health_conditions[]"
-                                    value="fever">
+                                <input type="checkbox" class="substituted" id="health_condition3" name="health_conditions[]" value="fever">
                                 <label for="health_condition3">Fever</label>
                             </div>
                             <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition4" name="health_conditions[]"
-                                    value="fatigue">
+                                <input type="checkbox" class="substituted" id="health_condition4" name="health_conditions[]" value="fatigue">
                                 <label for="health_condition4">Fatigue</label>
                             </div>
                             <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition5" name="health_conditions[]"
-                                    value="dizziness">
+                                <input type="checkbox" class="substituted" id="health_condition5" name="health_conditions[]" value="dizziness">
                                 <label for="health_condition5">Dizziness</label>
-
                             </div>
                             <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition6" name="health_conditions[]"
-                                    value="shortness_of_breath">
+                                <input type="checkbox" class="substituted" id="health_condition6" name="health_conditions[]" value="shortness_of_breath">
                                 <label for="health_condition6">Shortness of Breath</label>
-
                             </div>
                             <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition7" name="health_conditions[]"
-                                    value="pain">
+                                <input type="checkbox" class="substituted" id="health_condition7" name="health_conditions[]" value="pain">
                                 <label for="health_condition7">Pain (Specify):</label>
-
                                 <input type="text" id="pain_condition" name="pain_condition">
                             </div>
                         </div>
@@ -129,84 +103,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="continue">
                             <input type="button" value="back" onclick="history.back()">
                             <input type="button" value="next" onclick="nextTo()">
-
                         </div>
                     </div>
-                </form>
-                <form action="../controller/process_donation.php" method="post">
 
-                    <div id="donate-first">
-                        <!--                    <label for="blood_group">Blood Group:</label>-->
-                        <!--                    <div class="box">-->
-                        <!--                        <select id="blood_group" name="blood_group" required>-->
-                        <!--                            <option value="A+">A+</option>-->
-                        <!--                            <option value="A-">A-</option>-->
-                        <!--                            <option value="B+">B+</option>-->
-                        <!--                            <option value="B-">B-</option>-->
-                        <!--                            <option value="O+">O+</option>-->
-                        <!--                            <option value="O-">O-</option>-->
-                        <!--                            <option value="AB+">AB+</option>-->
-                        <!--                            <option value="AB-">AB-</option>-->
-                        <!--                        </select>-->
-                        <!--                    </div>-->
-
-
-                        <p>Health Conditions (check all that apply):</p>
-
-                        <div class="checkbox-group checkbox-wrapper-1">
-                            <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition1" name="health_conditions[]"
-                                    value="nausea">
-                                <label for="health_condition1">Nausea</label>
+                    <div id="donate-second" hidden>
+                        <div class="container">
+                            <h2 class="mb-4">Select Donation Date and Time</h2>
+                            <div class="form-group">
+                                <label for="datepicker">Choose Date:</label>
+                                <input type="date" id="datepicker" name="date" required>
                             </div>
-                            <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition2" name="health_conditions[]"
-                                    value="headache">
-                                <label for="health_condition2">Headache</label>
-                            </div>
-                            <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition3" name="health_conditions[]"
-                                    value="fever">
-                                <label for="health_condition3">Fever</label>
-                            </div>
-                            <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition4" name="health_conditions[]"
-                                    value="fatigue">
-                                <label for="health_condition4">Fatigue</label>
-                            </div>
-                            <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition5" name="health_conditions[]"
-                                    value="dizziness">
-                                <label for="health_condition5">Dizziness</label>
 
+                            <div class="form-group">
+                                <label for="timepicker">Choose Time:</label>
+                                <select name="time" id="timepicker" required>
+                                    <option value="">Select your option</option>
+                                    <option value="10 A.M - 11 A.M">10 A.M - 11 A.M</option>
+                                    <option value="11 A.M - 12 P.M">11 A.M - 12 P.M</option>
+                                    <option value="12 P.M - 1 P.M">12 P.M - 1 P.M</option>
+                                    <option value="1 P.M - 2 P.M">1 P.M - 2 P.M</option>
+                                    <option value="2 P.M - 3 P.M">2 P.M - 3 P.M</option>
+                                    <option value="3 P.M - 4 P.M">3 P.M - 4 P.M</option>
+                                    <option value="4 P.M - 5 P.M">4 P.M - 5 P.M</option>
+                                </select>
                             </div>
-                            <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition6" name="health_conditions[]"
-                                    value="shortness_of_breath">
-                                <label for="health_condition6">Shortness of Breath</label>
 
-                            </div>
-                            <div class="check-items">
-                                <input type="checkbox" class="substituted" id="health_condition7" name="health_conditions[]"
-                                    value="pain">
-                                <label for="health_condition7">Pain (Specify):</label>
-
-                                <input type="text" id="pain_condition" name="pain_condition">
+                            <div class="form-group">
+                                <label for="quantity">Quantity (Pints):</label>
+                                <input type="number" id="quantity" name="quantity" min="1" max="10" required>
                             </div>
                         </div>
 
-                        <p>Other Health Information:</p>
-
-                        <label for="drugs_taken">Any Drugs Taken?</label>
-                        <input type="text" id="drugs_taken" name="drugs_taken">
-
-                        <label for="existing_diseases">Any Existing Diseases?</label>
-                        <input type="text" id="existing_diseases" name="existing_diseases">
-
+                        <label for="donation_center">Select Donation Center:</label>
+                        <div class="box">
+                            <select id="donation_center" name="donation_center_id" required>
+                                <?php
+                                if($resultDonationCenter){
+                                    while($row = $resultDonationCenter->fetch_assoc()){
+                                        ?>
+                                        <option value="<?php echo $row['D_ID']?>"><?php echo $row['D_NAME']?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
                         <div class="continue">
-                            <input type="button" value="back" onclick="history.back()">
-                            <input type="button" value="next" onclick="nextTo()">
-
+                            <input type="button" value="back" onclick="backToFirst()">
+                            <input type="submit" value="Book">
                         </div>
                     </div>
                 </form>
@@ -219,8 +163,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="button" value="Back" onclick="history.back()" style="width: 100px; margin-top: 20px;">
                 </div>
             <?php } ?>
-            
         <?php } ?>
     </div>
-
-  
+    <script>
+        const backToFirst = () => {
+            document.getElementById('donate-second').setAttribute("hidden", "");
+            document.getElementById('donate-first').removeAttribute("hidden");
+        }
+        const nextTo = () => {
+            document.getElementById('donate-first').setAttribute("hidden", "");
+            document.getElementById('donate-second').removeAttribute("hidden");
+        }
+    </script>
+</body>
+</html>

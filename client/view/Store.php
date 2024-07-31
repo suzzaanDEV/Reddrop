@@ -1,13 +1,23 @@
 <?php
-require_once("../php-config/connection.php");
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "blood_bank";
 
-// Fetch donation data from the store table
-$sql = "SELECT * FROM store";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch donation data
+$sql = "SELECT * FROM donation";
 $result = $conn->query($sql);
 
-function isExpired($expiry_date) {
+function isExpired($donation_date) {
     $current_date = date("Y-m-d");
-    return strtotime($expiry_date) < strtotime($current_date);
+    return strtotime($donation_date) < strtotime($current_date);
 }
 ?>
 <!DOCTYPE html>
@@ -23,6 +33,12 @@ function isExpired($expiry_date) {
             margin: 0;
             padding: 0;
         }
+        .header {
+            background-color: #B91216;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
         .container {
             width: 80%;
             margin: 20px auto;
@@ -32,7 +48,7 @@ function isExpired($expiry_date) {
             justify-content: space-between;
             margin-bottom: 20px;
         }
-        .search-box, .filter-select {
+        .search-box, .filter-select, .add-button {
             padding: 10px;
             font-size: 16px;
         }
@@ -71,58 +87,48 @@ function isExpired($expiry_date) {
         .expired {
             background-color: #ffcccc;
         }
-        .delete-btn {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 5px 10px;
-        }
-        .delete-btn:hover {
-            background-color: #cc0000;
-        }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>Blood Donation Information</h1>
+    </div>
+
     <div class="container">
         <div class="search-filter">
-            <input type="text" id="searchBox" class="search-box" placeholder="Search by Track Number...">
+            <input type="text" id="searchBox" class="search-box" placeholder="Search Blood Group...">
             <select id="filterExpiration" class="filter-select">
                 <option value="">All Donations</option>
                 <option value="expired">Expired Donations</option>
                 <option value="valid">Valid Donations</option>
             </select>
+            <button class="add-button">Add New Donation</button>
         </div>
 
         <table>
             <thead>
                 <tr>
-                    <th>Track Number</th>
+                    <th>Donation ID</th>
                     <th>Blood Group</th>
-                    <th>Expiry Date</th>
+                    <th>Donation Date</th>
                     <th>Status</th>
-                    <th>Action</th> <!-- Delete column -->
                 </tr>
             </thead>
             <tbody id="donationTable">
                 <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        $expired = isExpired($row["BLOOD_EXPIRE_DATE"]) ? "expired" : "";
-                        $status = $expired ? "Expired" : "Valid";
+                        $expired = isExpired($row["DONATION_DATE"]) ? "expired" : "";
+                        $status = $expired ? "Expired" : $row["D_STATUS"];
                         echo "<tr class='$expired'>";
-                        echo "<td>" . htmlspecialchars($row["TRACK_NUMBER"]) . "</td>"; // Track Number column
-                        echo "<td>" . htmlspecialchars($row["BLOOD_TYPE"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["BLOOD_EXPIRE_DATE"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($status) . "</td>";
-                        echo "<td><form method='post' action='../controller/DonationHandel/delete_donatiopn.php' style='display:inline;'>
-                                  <input type='hidden' name='track_number' value='" . htmlspecialchars($row["TRACK_NUMBER"]) . "'>
-                                  <button type='submit' class='delete-btn'>Delete</button>
-                              </form></td>"; // Delete button
+                        echo "<td>" . $row["DONATION_ID"] . "</td>";
+                        echo "<td>" . $row["BLOOD_GROUP"] . "</td>";
+                        echo "<td>" . $row["DONATION_DATE"] . "</td>";
+                        echo "<td>" . $status . "</td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='5'>No data found</td></tr>";
+                    echo "<tr><td colspan='4'>No data found</td></tr>";
                 }
                 ?>
             </tbody>
@@ -134,8 +140,8 @@ function isExpired($expiry_date) {
             let searchQuery = this.value.toLowerCase();
             let rows = document.querySelectorAll('#donationTable tr');
             rows.forEach(row => {
-                let trackNumber = row.cells[0].textContent.toLowerCase();
-                if (trackNumber.includes(searchQuery)) {
+                let bloodGroup = row.cells[1].textContent.toLowerCase();
+                if (bloodGroup.includes(searchQuery)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';

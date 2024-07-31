@@ -4,5 +4,6 @@ require "../php-config/connection.php";
 
 $sql = "SELECT * FROM `donationcenter`;";
 
-$result = $conn->query($sql);
-//$row = $result->fetch_assoc();
+$resultDonationCenter = $conn->query($sql);
+;
+

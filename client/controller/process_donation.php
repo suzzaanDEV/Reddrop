@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['date'])) {
 
     if ($userData['healthStatus'] == '1' && !isset($_REQUEST['health_conditions'])){
         $bloodGroup = trim(strtoupper($userData['bloodtype']));
-        $donationCenter = trim(strtoupper($_REQUEST['donation_center']));
         $drugsTaken = trim(strtoupper($_REQUEST['drugs_taken']));
         $existingDiseases = trim(strtoupper($_REQUEST['existing_diseases']));
         $date = trim(strtoupper($_REQUEST['date']));
@@ -37,9 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['date'])) {
             header("Location: ../view/Dashboard-board.php?booked=0");
             exit();
         }else{
-                $donationCenterId = $_REQUEST['donation_center-id'];
+                $donationCenterId = $_REQUEST['donation_center_id'];
+                $quantity = $_REQUEST['quantity'];
 
-                $bookAppointmentQuery = "INSERT INTO donation(`USER`, `DONATION_CENTER`, `BLOOD_GROUP`, `DRUG_TAKEN`, `EXISTING_DISEASE`, `CONTACT_NUMBER`, `DONATION_DATE`, `DONATION_TIME`) VALUES ('$userId', '$donationCenterId', '$bloodGroup', '$drugsTaken', '$existingDiseases', '$contactNumber', '$date', '$time')";
+                $bookAppointmentQuery = "INSERT INTO donation(`USER`, `DONATION_CENTER`, `BLOOD_GROUP`,`QUANTITY`, `DRUG_TAKEN`, `EXISTING_DISEASE`, `CONTACT_NUMBER`, `DONATION_DATE`, `DONATION_TIME`) VALUES ('$userId', '$donationCenterId', '$bloodGroup',$quantity ,'$drugsTaken', '$existingDiseases', '$contactNumber', '$date', '$time')";
                 $done = $conn->query($bookAppointmentQuery);
                 if ($done){
                     header("Location: ../view/Dashboard-board.php?booked=1");

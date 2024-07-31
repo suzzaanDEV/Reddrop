@@ -64,6 +64,7 @@ iframe {
 
 h1, h2 {
     color: #fff;
+    margin-top: 0;
 }
 @media (max-width: 600px) {
     body{

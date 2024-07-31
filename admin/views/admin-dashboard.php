@@ -101,6 +101,7 @@ if (!isset($_SESSION['adminId'])) {
         <!-- Add more cards for different statistics -->
 
     </div>
+    <?php include("./Dashboard") ?>
 
 
 </div>

@@ -21,7 +21,7 @@ if (!isset($_SESSION['adminId'])) {
         <?php
             require "../model/Admin-admin-fetch.php";
         ?>
-        <img src="../Public/Images/Profile.jpg" alt="Profile Photo" id="profilePhoto">
+        <img src="../Public/Images/Profile.png" alt="Profile Photo" id="profilePhoto">
         <span><?php echo $row['A_NAME']?></span>
         <a href="../../client/controller/logout.php">
             <button id="logout">Logout</button>

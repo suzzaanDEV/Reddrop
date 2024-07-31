@@ -25,7 +25,7 @@ if (!isset($_SESSION['adminId'])) {
 <div id="sidePanel">
     <h1>Admin Panel</h1>
     <ul>
-        <a href="./admin-dashboard.php" target="contentFrame"><li><i class="fa-duotone fa-gauge"></i> Dashboard</li></a>
+        <a href="./Dashboard" target="contentFrame"><li><i class="fa-duotone fa-gauge"></i> Dashboard</li></a>
         <a href="./Store.php" target="contentFrame"><li><i class="fa-duotone fa-store"></i> Store</li></a>
         <a href="./Blood-request.php" target="contentFrame"><li><i class="fa-duotone fa-truck-droplet"></i> Bloods Request</li></a>
         <a href="./usermanagement.php" target="contentFrame"> <li><i class="fa-duotone fa-user"></i> User Management</li></a>
@@ -38,7 +38,7 @@ if (!isset($_SESSION['adminId'])) {
 </div>
 
 <div id="content">
-    <iframe name="contentFrame" src="./admin-dashboard.php"></iframe>
+    <iframe name="contentFrame" src="./Dashboard"></iframe>
 </div>
 </div>
 <?php require "../views/Footer.php"?>

@@ -147,18 +147,8 @@ if (isset($_SESSION['userId']) >= 0 && !isset($_GET['successful'])) {
         <hr>
         <footer>
             <div class="any-query">
-                <p class="query sec-title">Any Query?</p>
-                <form action="#">
-                    <label for="Qname">Name:</label>
-                    <input type="text" id="Qname" name="Qname">
-                    <label for="Qemail">Email:</label>
-                    <input type="text" id="Qname" name="Qname">
-                    <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject">
-                    <label for="Query">Message:</label>
-                    <textarea name="Query" id="Query" cols="60" rows="10" placeholder="Message here...."></textarea>
-                    <button type="submit" class="button-main">Send <i class="fa-duotone fa-paper-plane-top"></i></button>
-                </form>
+            <?php require("./FooterQueryForm.php")?>
+                
             </div>
             <div class="contact-us flex-item-center">
                 <div class="social-contact">

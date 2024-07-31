@@ -28,6 +28,7 @@
             <th>Time</th>
             <th>Location</th>
             <th>Blood Group</th>
+            <th>Pints</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -44,8 +45,11 @@
                         <td><?php echo $row['DONATION_TIME']?></td>
                         <td><?php echo $row['D_NAME']?></td>
                         <td><?php echo $row['BLOOD_GROUP']?></td>
+                        <td>
+                            <input type="number" name="pints" min="1" max="4" required form="form-<?php echo $row['DONATION_ID'];?>">
+                        </td>
                         <td class="action-btns">
-                            <form action="../controller/Appointment/appointment-done.php" method="post">
+                            <form id="form-<?php echo $row['DONATION_ID'];?>" action="../controller/Appointment/appointment-done.php" method="post">
                                 <input type="hidden" name="userId" value="<?php echo $row['userId']?>">
                                 <input type="hidden" name="bloodGroup" value="<?php echo $row['BLOOD_GROUP']?>">
                                 <input type="hidden" name="doneId" value="<?php echo $row['DONATION_ID']?>">
