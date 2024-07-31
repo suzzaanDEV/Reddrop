@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/5d2390e5-ed2a-4e52-a7f5-59310a8806c0/console_2.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/admin/model/Admin-donation-fetch.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/admin/model/Admin-donationCenter-fetch.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/admin/model/Admin-request-fetch.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/client/controller/process_login.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/client/controller/process_request.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/client/test.php" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>

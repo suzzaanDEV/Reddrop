@@ -1,0 +1,67 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body background and general styles */
+body {
+    background-color: #f0f0f0; /* Light grey background */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 0, 0, 0.1); /* Transparent red background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    backdrop-filter: blur(10px); /* Blur effect */
+    max-width: 600px;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8B0000; /* Dark red text color */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #8B0000; /* Dark red label color */
+}
+
+textarea, input[type="text"], input[type="date"], input[type="number"], .submit-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus, input:focus, .submit-button:hover {
+    outline: none;
+    border-color: #8B0000; /* Dark red border color on focus/hover */
+}
+
+.submit-button {
+    background-color: #8B0000; /* Dark red button background color */
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-button:hover {
+    background-color: #5A0000; /* Darker shade of red on hover */
+}
