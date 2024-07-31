@@ -1,0 +1,14 @@
+#RewriteEngine On
+#
+##location of your website
+#
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#
+#RewriteRule ^(.+)$ /client/index.php?uri=$1 [QSA,L]
+#
+#RewriteEngine On
+#Options +FollowSymlinks
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ /client/index.php [NC,QSA]

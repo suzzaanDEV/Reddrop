@@ -1,0 +1,494 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+} */
+body{
+    padding-bottom: 100px;
+}
+#user-name{
+    display: none;
+}
+
+.button-main {
+    width: 150px;
+    height: 50px;
+    font-size: 18px;
+    padding: 10px;
+    color: #B91216;
+    background-color: rgb(233, 233, 233);
+    border: none;
+    outline: none;
+    font-weight: 500;
+}
+
+.button-main:hover {
+    background-color: #B91216;
+    color: white;
+}
+
+.flex-item-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-item-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-title {
+    font-weight: 600;
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+.sec-title{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.slogan {
+    width: 100%;
+    height: 500px;
+    background: url(../assets/slogan-top.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.slogan .gradient .arrow .first {
+    color: #fff;
+    font-size: 60px;
+    position: absolute;
+    /* bottom: -42px; */    
+    animation-name: arrow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    z-index: 99;
+}
+
+@keyframes arrow {
+    0%{
+        bottom: -30px;
+    }
+    50%{
+        bottom: -60px;
+    }
+    100%{
+        bottom: -30px;
+    }
+}
+
+.slogan .gradient .arrow .second {
+    color: #fff;
+    font-size: 40px;
+    bottom: -110px;
+    right: 47.5%;
+    position: absolute;
+    z-index: 99;
+    
+}
+
+.slogan .gradient {
+    padding: 20px 0;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(90deg, rgba(181, 46, 50, 1) 0%, rgba(185, 18, 22, 0.3321661428243172) 35%, rgba(0, 212, 255, 1) 100%);
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+
+}
+
+.slogan p {
+    padding: 20px;
+    font-weight: 900;
+    width: 600px;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+
+.hero {
+    height: 100%;
+    padding: 10%;
+    background-color: #B91216;
+
+}
+
+.hero .action-cards {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hero .cards {
+    width: 200px;
+    height: 220px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero .cards i {
+    color: #B91216;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+
+.why {
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    height: 100%;
+    padding: 5rem 5rem 0;
+}
+
+.why .left img {
+    max-width: 500PX;
+    width: auto\9;
+    height: auto;
+}
+
+.why .right {
+    width: 50%;
+    flex-direction: column;
+}
+
+.why .right li {
+    padding-top: 20px;
+}
+
+.why .right li span {
+    font-weight: 600;
+    list-style-type: lower-latin;
+}
+
+
+.about-us {
+    flex-wrap: wrap;
+    padding: 5rem;
+    gap: 30px;
+    background-color: #B91216;
+    color: #FFF;
+
+}
+
+.about-us .left {
+    width: 50%;
+}
+
+.about-us .left .post,
+.why .post {
+    line-height: 1.5;
+    font-size: 1.2rem;
+}
+
+.why .post .more {
+    margin-top: 30px;
+}
+
+.about-us .right img {
+    max-width: 500px;
+    width: auto\9;
+    height: auto;
+}
+
+
+
+/* EVENt section */
+.events {
+    padding: 5rem;
+}
+
+.events .event-cards {
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.events .event-cards .cards {
+    background-color: #B91216;
+    width: 30%;
+    height: 100%;
+}
+
+.events .event-cards .cards img {
+    width: 100%;
+}
+
+.events .event-cards .cards {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    min-width: 300px;
+    gap: 10px;
+    color: #FFF;
+
+}
+
+.events .event-cards .cards .event-title {
+    font-size: 30px;
+    font-weight: 500;
+    padding: 0 20px;
+}
+
+.events .event-cards .cards .event-date {
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+.events .event-cards .cards .learn-more {
+    width: 100%;
+    padding: 0 20px;
+}
+
+.events .more-event {
+    margin-top: 30px;
+}
+
+.events .event-cards .cards .learn-more {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.events .event-cards .cards .learn-more button:hover {
+    background-color: #ff5a5c;
+}
+
+
+footer{
+    width: 100%;
+    height: 100%;
+    padding: 60px;
+    color: #000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer label{
+    display: block;
+    margin-top: 20px;
+}
+footer input{
+    padding: 7px;
+    font-size: 18px ;
+    outline: none;
+    border: 1px solid rgb(203, 203, 203);
+    width: 400px;
+}
+
+
+footer textarea{
+    width: 400px;
+    height: 300px;
+    padding: 7px;
+    resize: none;
+}
+footer p{
+    font-size: 30px;
+}
+footer .any-query button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    gap: 10px
+}
+footer .any-query button i{
+    font-size: 20px;
+}
+
+
+footer .contact-us{
+    flex-direction: column;
+    gap: 40px;
+}
+footer .contact-us i{
+    font-size: 40px;
+    
+}
+footer .contact-us i:hover{
+    color: #B91216;
+}
+
+footer .navigating ul{
+list-style: none;
+flex-direction: column;
+}
+footer .navigating a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    padding: 20px;
+}
+footer .navigating a:hover{
+    text-decoration: underline;
+}
+
+.cp-section{
+    text-align: center;
+}
+.cp-section img{
+    width: 100px;
+}
+
+
+/* // X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {}
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .slogan .gradient .arrow .first {
+        font-size: 40px;
+    }
+    .slogan .gradient .arrow .second {
+        font-size: 20px;
+        bottom: -80px;
+        right: 47.7%;
+        
+    }
+}
+
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .slogan .gradient .arrow {
+        display: none;
+    }
+    
+
+    .about-us {
+        justify-content: center;
+    }
+
+    .about-us .left,
+    .about-us .right {
+
+        width: 100%;
+    }
+
+    .about-us .right {
+        text-align: center;
+    }
+
+    .events {
+        padding: 2rem;
+    }
+    footer{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    footer .contact-us{
+        flex-direction: column;
+    }
+    footer .social-title{
+        display: block;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .slogan p {
+        font-size: 2rem;
+        width: 70%;
+    }
+
+    .why {
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .why .left img {
+        width: 350px;
+    }
+
+
+    .events {
+        padding: 1rem;
+    }
+
+    .events .event-cards .cards {
+        width: 280px;
+    }
+}
+
+
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .slogan p {
+        font-size: 1.5rem;
+        width: 70%;
+    }
+
+    .why {
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .why .right {
+        width: 100%;
+    }
+
+    .why .left img {
+        width: 280PX;
+        margin-top: 40PX;
+    }
+
+    /*  About us */
+    .about-us {
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .about-us .left {
+        width: 100%;
+    }
+
+    .about-us .right img {
+        width: 250px;
+    }
+
+    /* EVENTS */
+
+    .events {
+        padding: 2rem;
+    }
+
+    .events .event-cards .cards {
+        width: 280px;
+    }
+    footer input{
+        width: 200px;
+    }
+    footer textarea{
+        width: 200px;
+        height: 300px;
+    }
+}
+
+/* // Small devices (landscape phones, less than 768px) */
