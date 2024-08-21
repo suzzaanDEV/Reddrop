@@ -1,4 +1,3 @@
-markdown
 
 # Red Drop Blood Donor Management System
 
