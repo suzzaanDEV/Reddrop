@@ -1,5 +1,5 @@
 <?php
-require "../view/LoggedNav.php";
+require "../view/Navbar.php";
 session_start();
 
 if($_SESSION['userid'] >= 0){
