@@ -1,5 +1,5 @@
 <?php require "../php-config/connection.php";
-session_start();
+
 
 if (isset($_SESSION['userId']) >= 0 && !isset($_GET['successful'])) {
     header("Location: {$_SERVER['REQUEST_URI']}?successful=1");

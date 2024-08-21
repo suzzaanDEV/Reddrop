@@ -16,6 +16,8 @@ body {
     align-items: center;
     padding: 10px 30px;
 
+    transition: 0.5s linear ease-in-out;
+
     /*position: absolute;*/
     position: sticky;
     z-index: 999;
@@ -33,24 +35,25 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     color: black;
 }
 #profile span{
-    font-size: 20px;
+    font-size: 16px;
 }
 
 #profilePhoto {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
+
 
 #logout {
     background-color: #fff;
     color: #B91216;
     padding: 8px 12px;
-    width: 100px;
+    width: 80px;
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid #B91216;
@@ -62,8 +65,41 @@ body {
 #logout:active{
     background-color: #b4373b;
 }
+.fa-bars{
+    display: none;
+}
+#navbarIcon{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
 @media (max-width: 600px) {
     #navbar{
         flex-direction: column;
+    }
+    #profile{
+        /* display: none; */
+    gap: 5px;
+    }
+    #profile img{
+       width: 30px;
+       height: 30px;
+    }
+    #profile span{
+        font-size: 14px;
+    }
+    #profile button{
+        width: 60px;
+        height: 35px;
+    }
+    #logo{
+        width: 20px;
+    }
+    .fa-bars{
+        display: inline-block;
+        color: black;
+        font-size: 25px;
+        cursor: pointer;
     }
 }

@@ -24,6 +24,7 @@ if (!isset($_SESSION['adminId'])) {
 
 <div id="sidePanel">
     <h1>Admin Panel</h1>
+    <i class="fa-duotone fa-solid fa-xmark" onclick="hideSideBar()" hidden></i>
     <ul>
         <a href="./Dashboard" target="contentFrame"><li><i class="fa-duotone fa-gauge"></i> Dashboard</li></a>
         <a href="./Store.php" target="contentFrame"><li><i class="fa-duotone fa-store"></i> Store</li></a>
@@ -42,6 +43,17 @@ if (!isset($_SESSION['adminId'])) {
 </div>
 </div>
 <?php require "../views/Footer.php"?>
+
+<script>
+    const hideSideBar = ()=>{
+        document.getElementById("sidePanel").style.display = 'none';
+    }
+
+    const displaySideBar = ()=>{
+        console.log('clicked');
+        document.getElementById("sidePanel").style.display = 'block';
+    }
+</script>
 
 </body>
 </html>
